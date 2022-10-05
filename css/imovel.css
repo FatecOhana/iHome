@@ -1,0 +1,128 @@
+body{
+    background-color: #eee;
+}
+
+#navbar{
+    background-color: #fff;
+}
+
+/* NAVBAR */
+#pesquisa button{
+    color: #fff;
+    border-color: #fff;
+}
+
+#pesquisa button:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.drop{
+    color: #fff;
+}
+
+@media screen and (min-width: 85em) {
+    #pesquisa{
+        margin-left: 9em;
+    }
+}
+
+/* Parte princiapl*/
+#principal{
+    margin-top: 9em;
+    margin-bottom: 1em;
+}
+
+/* menu lateral */
+#menu{
+    background-color: #ddd;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+#menu li{
+    padding: 1em;
+    list-style: none;
+}
+
+@media screen and (min-width: 48em) {
+
+    #menu li{
+        float: left;
+    }
+}
+
+@media screen and (min-width: 64em) {
+
+    #menu{
+        margin: 0 1.5em 0 1.5em;
+    }
+
+    #menu li{
+        float: none;
+        padding-left: 0;
+    }
+}
+
+@media screen and (min-width: 85em) {
+    #menu{
+        margin: 0 2em 0 2em;
+        padding: 2em;
+    }
+    
+    #menu li{
+        padding: 0 0 3em 0;
+    }
+}
+
+/* Vagas */
+#viewVagas{
+    background-color: #ddd;
+    border-radius: 1em;
+    padding: 2.5em 2.5em;
+    border: none;
+}
+
+@media screen and (min-width: 85em) {
+    
+    #viewVagas{
+        background-color: #ddd;
+        border-radius: 1em;
+        padding: 2.5em 2.5em;
+    }
+}
+
+/* Card de vagas */
+.cardVagas{
+    margin-bottom: 2em;
+}
+
+@media screen and (min-width: 85em) {
+    
+    .cardVagas{
+        margin-bottom: 2em;
+    }
+}
+
+
+/* Filtrar vagas */
+#filtro select{
+    padding: 10px 10px;
+    border: none;
+    border-radius: 0.5em;
+    width: 15em;
+}
+
+.btn{
+    padding: 10px 20px;
+}
+
+#principal{
+    margin-top: 15em;
+}
+
+#cards{
+    margin-right: 3em;
+    margin-bottom: 3em;
+}
+

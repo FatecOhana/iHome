@@ -1,0 +1,174 @@
+/* Formmatação padrão */
+* {
+    font-family: 'Lato', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.bg-primary-color {
+    background-color: #700297;
+}
+
+.bg-secondary-color {
+    background-color: #ece8ea;
+}
+
+.bg-dark-color{
+    background-color: #050505;
+}
+
+.primary-color{
+    color: #ccc;
+}
+
+.secondary-color{
+    color: #7a7a7a;
+}
+
+/* cores */
+:root{
+    --PrimaryBlack: #222;
+    --PrimaryWhite: #fff;
+
+    --PrimaryPurple: #600993;
+    --PrimaryLightPurple: #8808C4;
+    --SecondaryPurple: #BE88ED;
+
+    --PrimaryOrange: #F17022;
+    --SecondaryOrange: #ED9462;
+
+    --PrimaryYellow: #F5FF33;
+    --SecondaryYellow: #F7F29A;
+
+    --PrimaryBlue: #049DD9;
+    --SecondaryBlue: #8CB4F4;
+}
+
+/* NAVBAR */
+#navbar {
+    background-color: #fff;
+}
+
+#navbar a.active{
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+#navbar a:hover{
+    color: #fff;
+    transition: .5s;
+}
+
+.navbar-brand{
+    display: flex;
+}
+
+.navbar-brand img{
+    width: 10em;
+}
+
+.navbar-brand span:hover{
+    color: #7a7a7a;
+}
+
+#navbar-items .navbar-nav{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+#navbar-items .navbar-item{
+    margin: 0 1em;
+}
+
+#navbar-items .nav-item{
+    padding-left: 2em;
+}
+
+/* FOOTER */
+#footer{
+    background-color: #600993;
+    margin-top: 1em;
+    padding: 3em 2em 1em 2em;
+}
+
+#footer h3{
+   color: #fff;
+   text-transform: uppercase;
+   font-size: 1.25em;
+   margin-top: 1.5em;
+   margin-bottom: 1em;
+}
+
+#footer img{
+    width: 18em;
+    height: 5em;
+}
+
+#social-icons i{
+    padding-left: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #ccc;
+}
+
+#social-icons i:hover{
+    color: #fff;
+}
+
+/* FOOTER DETAILS */
+#footer-details{
+    margin-bottom: 1em;
+}
+
+#footer-details p{
+    color: #fff;
+}
+
+/* FOOTER BOTTOM */
+#footer-bottom{
+    border-top: 1px solid #000;
+    padding-top: 2em;
+    margin-top: 1em;
+}
+
+#footer-bottom{
+    color: #fff;
+}
+
+#footer-bottom i{
+    color: #ff1100;
+    margin-left: 0.3em;
+}
+
+@media screen and (min-width: 48em){
+
+    #footer h3{
+        margin-top: 0;
+    }
+    
+    #footer-top img{
+        width: 10em;
+    }
+
+    #footer-details{
+        margin-left: 4em;
+    }
+
+    #social-icons i{
+        padding-right: 10px;
+    }
+
+    #footer-bottom .valor{
+        text-align: right;
+    }
+
+}
+
+@media screen and (min-width: 64em){
+    
+    #footer-details{
+        margin-left: 2em;
+    }
+}
+

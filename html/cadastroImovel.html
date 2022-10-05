@@ -19,8 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
         <!-- CSS -->
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/login.css">
+        <link rel="stylesheet" href="../css/cadastro.css">
 
         <!-- JavaScript Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -51,7 +50,10 @@
                             <a href="#" class="nav-link active primary-color" aria-current="page">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="./html/imoveis.html" class="nav-link primary-color" aria-current="page">Imóveis</a>
+                            <a href="./casa.html" class="nav-link primary-color" aria-current="page">Casas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./apartamento.html" class="nav-link primary-color" aria-current="page">Apartamentos</a>
                         </li>
                     </ul>
                 </div>
@@ -62,12 +64,12 @@
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 text-center" id="title">
-                        <h2>Cadastre-se e acesse milhares de vagas</h2>
-                        <h3>Encontre o emprego dos seus sonhos</h3>
+                        <h2>Cadastre o seu imovel aqui</h2>
+                        <h3>O melhor site de vendas de imóveis</h3>
                     </div>
 
                     <div class="col-12 col-md-7" id="image">
-                        <img src="./img/telaCadastro.webp" alt="" class="d-block w-100">
+                        <img src="../img/telaCadastro.webp" alt="" class="d-block w-100" id="img">
                     </div>
                     
                     <div class="col-12 col-md-4 text-center" id="formCadastro">
@@ -91,7 +93,7 @@
                             <div id="groupQuintal">
                                 <label for="tem quinta">Possui Quintal</label>
                                 <select class="form-select" aria-label="Default select example" name="temQuintal" id="quintal">
-                                    <option selected>Tem quintal</option>
+                                    <option value="false" selected>Tem quintal</option>
                                     <option value="true">Sim</option>
                                     <option value="false">Não</option>
                                 </select>
@@ -123,6 +125,7 @@
  
         <script>
             // Varivables
+            let form = document.querySelector('form');
             let tipoImovel = document.querySelector("#tipoImovel");
 
             let quantidadeQuartos = document.querySelector('#numberQuartos');
@@ -133,14 +136,14 @@
             let valorCondominio = document.querySelector('#condominio');
 
             // Listener of Submit envent in Form
-            document.querySelector('form').addEventListener('submit', (event)=>{
+            form.addEventListener('submit', (event)=>{
                 event.preventDefault();
                 cadastrarImovel();
             });
 
             // Change visibility between APARTAMENTO or CASA
             tipoImovel.addEventListener('click', (e)=> {
-                        console.log(e.target.value)
+                    console.log(e.target.value)
                     if(e.target.value.toUpperCase() === "APARTAMENTO"){
                         document.querySelector('#groupCondominio').style.display = "block";
                         document.querySelector('#groupQuintal').style.display = "none";
@@ -164,11 +167,11 @@
                             quantidadeQuartos: quantidadeQuartos.value,
                             valor: valor.value,
                             endereco: endereco.value,
-                            temQuintal: temQuintal.value
+                            valorCondominio: valorCondominio.value
                         }
                     };
                 }
-                else if(ipoImovel.value != null && tipoImovel.value.toUpperCase() === "CASA"){
+                else if(tipoImovel.value != null && tipoImovel.value.toUpperCase() === "CASA"){
                     requestURL += "casa";
                     body =  {
                         data: {
@@ -176,7 +179,7 @@
                             quantidadeQuartos: quantidadeQuartos.value,
                             valor: valor.value,
                             endereco: endereco.value,
-                            valorCondominio: valorCondominio.value
+                            temQuintal: temQuintal.value
                         }
                     };
                 } else{
@@ -184,6 +187,7 @@
                     return;
                 }
 
+                console.log(body)
                 let httpAPI = fetch(requestURL,{
                     method: "POST",
                     headers: {'Content-Type': 'application/json'},
@@ -193,52 +197,17 @@
                     if(!response.ok) throw new Error("Erro na Solicitação");
                     return response.json();
                 })
-                
-                //pegando json
-                .then(response => console.debug(response["data"]))
+                .then(response => {
+                    console.debug(response["data"]);
+                    alert("Registro Salvo com Sucesso !!!");
+                    form.reset();
+                })
                 .catch(error => {
                     console.log(error);
                     alert("Houve um erro ao realizar o Processo. Tente Novamente")
                 })
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="col-12 col-lg-8 card center" id="viewVagas">
-                <div class="row">
-                    <div class="col-12 col-md-6 cardVagas">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5 class="card-title primary-color">Desenvolvedor Front</h5>
-                                <p class="card-text secondary-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-dark">Saber Mais</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 cardVagas">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h5 class="card-title primary-color">Desenvolvedor Front</h5>
-                                <p class="card-text secondary-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-dark">Saber Mais</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    </div>
 
         </script>
 

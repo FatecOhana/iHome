@@ -71,52 +71,41 @@
         <script>
             const principal = document.querySelector("#card-list");
             fetchImoveis();
-            fetchImoveis2();
            
             function fetchImoveis() {
-                let requestURL = "http://34.203.27.186:8090/api/v1/";
-                
                 let array = [];
-                ["apartamento"].forEach(function(tipoImovel) {
-                    let httpAPI = fetch(requestURL + tipoImovel + "/all")
-                    .then(response => {
-                        if(!response.ok) throw new Error("Erro na Solicitação");
-                        return response.json();
-                    })
-                    .then(response =>{
-                        console.debug(response["data"]);
 
-                        let data = response["data"];
+                let requestURL = "http://34.203.27.186:8090/api/v1/";
+                let httpAPI = fetch(requestURL + "casa" + "/all")
+                .then(response => {
+                    if(!response.ok) throw new Error("Erro na Solicitação");
+                    return response.json();
+                })
+                .then(response =>{
+                    console.debug(response["data"]);
 
-                        for (let i = 0; i < data.length; i++) {
-                            const element = data[i];
+                    let data = response["data"];
 
-                            let customValue;
-                            if(tipoImovel.toUpperCase() == "CASA"){
-                                customValue = element.temQuintal ? "Com Quintal" : "Sem Quintal";
-                            } else{
-                                customValue = "R$ " + element.valorCondominio + " (Condominio)";
-                            }
+                    for (let i = 0; i < data.length; i++) {
+                        const element = data[i];
+                        array.push(`
+                                <div class="card col-5" id="cards">
+                                    <h5 class="card-header">Casa</h5>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Endereço: ${element.endereco}</h5>
+                                        <p class="card-text">Quartos: ${element.quantidadeQuartos}</p>
+                                        <p class="card-text">R$ ${element.valor} + ${element.temQuintal ? "Com Quintal" : "Sem Quintal"}</p>
+                                    </div>
+                                </div>`);
+                    }   
 
-                            array.push(`
-                                    <div class="card col-5" id="cards">
-                                        <h5 class="card-header">${tipoImovel.toUpperCase()}</h5>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Endereço: ${element.endereco}</h5>
-                                            <p class="card-text">Quartos: ${element.quantidadeQuartos}</p>
-                                            <p class="card-text">R$ ${element.valor} + ${customValue}</p>
-                                        </div>
-                                    </div>`);
-                        }   
-
-                        // Insert Cards in Div
-                        principal.innerHTML = array.join("<br/>"); 
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        alert("Houve um erro ao realizar o Processo. Tente Novamente")
-                    });  
-                });
+                    // Insert Cards in Div
+                    principal.innerHTML = array.join("<br/>"); 
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("Houve um erro ao realizar o Processo. Tente Novamente")
+                });  
             }
 
         </script>
